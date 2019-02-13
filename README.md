@@ -4,7 +4,7 @@ exercise-1-modularity-leeb24 created by GitHub Classroom
 
 # Architecture Diagram & Explanation 
 
-![Alt text](/Adiagram.png ?raw=true "Diagram")
+![Alt text](/Adiagram.png?raw=true "Diagram")
 
 # Pros and Cons 
 
