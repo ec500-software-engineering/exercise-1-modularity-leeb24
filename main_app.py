@@ -19,6 +19,7 @@ def main(cmd_args):
     tty = display.TextTerminalDisplay()
 
     notification_man = notification_manager.FlexibleNotificationManager(
+        
         Contact('Nurse Suzy', None, None, None),
         notifications_sender.MockSMSSender(),
         notifications_sender.MockTelegramSender(),
@@ -26,14 +27,15 @@ def main(cmd_args):
     )
     
     pulse_reader = sensors.BloodPulseSensorReader(1, data_proc_queue, tty)
-    oxy_reader = sensors.BloodOxygenSensorReader(4, data_proc_queue, tty)#4
-    pressure_reader = sensors.BloodPressureSensorReader(2, data_proc_queue, tty)#2
+    oxy_reader = sensors.BloodOxygenSensorReader(4, data_proc_queue, tty) #4
+    pressure_reader = sensors.BloodPressureSensorReader(2, data_proc_queue, tty) #2
     real_time_proc = realtime_data_processor.RealTimeDataProcessor(data_proc_queue, notification_man)
 
     pulse_reader.start()
     oxy_reader.start()
     pressure_reader.start()
     real_time_proc.start()
+
     oxy_reader.join()
     pressure_reader.join()
     pulse_reader.join()

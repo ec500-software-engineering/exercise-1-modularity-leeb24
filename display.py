@@ -67,16 +67,19 @@ class TextTerminalDisplay(DisplayHandler):
 
     def display_graph(self):
         #print('Thread {}: waiting for lock'.format(threading.get_ident()))
+
         pattern = [Gre, Blu, Red]
         
-        self._graph_lock.acquire(blocking=True)
-        data = vcolor([('Heart Rate', self._cur_pulse), ('SYS mmHg kPa', self._cur_systolic),
-                ('DIA mmHg kPa', self._cur_diastolic), ('Oxygen Saturation', self._cur_oxygen)],pattern)
+        self._graph_lock.acquire( blocking = True ) 
+
+        data = vcolor( [('Heart Rate', self._cur_pulse), ('SYS mmHg kPa', self._cur_systolic),
+                ('DIA mmHg kPa', self._cur_diastolic), ('Oxygen Saturation', self._cur_oxygen)] , pattern )
 
         for graph_line in self._graph.graph('VITAL READINGS', data):
             print(
                 graph_line
             )
+
         #print('Thread {}: releasing lock'.format(threading.get_ident()))
         self._graph_lock.release()
 

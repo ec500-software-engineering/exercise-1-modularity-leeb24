@@ -1,6 +1,7 @@
 import time
 import random
 import threading
+
 from common_types import SensorDataType
 from common_types import Message, MessageUrgency
 
@@ -28,9 +29,8 @@ class RealTimeDataProcessor(threading.Thread):
         we issue a command to the notification manager
         :return:
         '''
-
         while True:
-            incoming_data = self._in_queue.get(block=True)
+            incoming_data = self._in_queue.get(block=False)
             if incoming_data.get_type() == SensorDataType.BLOOD_PRESSURE:
                 if not RealTimeDataProcessor.blood_pressure_is_normal(incoming_data):
 
@@ -42,7 +42,7 @@ class RealTimeDataProcessor(threading.Thread):
                     )
             elif incoming_data.get_type() == SensorDataType.BLOOD_PULSE:
                 if not RealTimeDataProcessor.blood_pulse_is_normal(incoming_data):
-                    
+
                     self._notification_man.send_message(
                         Message(
                             '!!!! PATIENT ALERT PULSE IS ABNORMAL !!!!',
