@@ -13,6 +13,7 @@ The whole system is semi asynchronous because we are using muti-threading and ta
 ## Pros and Cons 
 
 Pro - I think this architecture is very easy to scale functionality wise. Since we are collecting the data in the central queue, if we were to add a new Vital reading, we can simply plug in the module and pass the reading to the central queue.
+The upper-level of the code is really abstract and modular so it is pretty easy for a new developer to follow the code.
 
 Cons- There was an error in the display where the threads would interfere with each other before one could finish its process. We solved it by locking the threads untill it finished its process. 
 
