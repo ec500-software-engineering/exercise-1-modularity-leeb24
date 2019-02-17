@@ -2,4 +2,4 @@ mypy
 flake8
 pytest
 ascii_graph
-Pyasciigraph
+
