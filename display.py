@@ -1,5 +1,5 @@
 from ascii_graph import Pyasciigraph
-from ascii_graph.colors import *
+from ascii_graph.colors import Gre,Blu,Red
 from ascii_graph.colordata import vcolor
 import threading
 
